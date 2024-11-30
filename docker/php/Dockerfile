@@ -4,12 +4,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt-get update && apt-get install -y \
         libonig-dev \
         libxml2-dev \
-        && docker-php-ext-install pdo mbstring
+        && docker-php-ext-install pdo mbstring pdo_mysql mysqli
 
 COPY . /app
+
 
 WORKDIR /app
 
 RUN composer install
 
-EXPOSE 8181
+EXPOSE 9000
